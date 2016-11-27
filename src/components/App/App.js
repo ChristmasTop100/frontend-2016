@@ -4,24 +4,38 @@ import Background from '../Background';
 import SongsList from '../../containers/SongsList';
 import logo from './logo.svg'
 
-const appBarStyle = {
-  backgroundColor: '#0f1016',
-}
-
-const mainStyle = {
-  maxWidth: '1110px',
-  margin: '60px auto',
-  padding: '0 15px'
+const styles = {
+  appBar: {
+    backgroundColor: '#0f1016',
+    opacity: 0.95
+  },
+  logo: {
+    marginRight: '10px'
+  },
+  title: {
+    display: 'inline',
+    color: '#ed215d',
+    fontSize: '23px',
+    fontWeight: '300'
+  },
+  main: {
+    maxWidth: '1110px',
+    margin: '60px auto',
+    padding: '0 15px'
+  },
+  strong: {
+    fontWeight: 500
+  }
 }
 
 class App extends Component {
   render() {
     const Title = (
       <div>
-        <img style={{marginRight: '12px'}} src={logo} alt="One Shoe" />
-        <span style={{color: '#ed215d', fontSize: '23px', fontWeight: '300'}}>
-          Christmas <span style={{fontWeight: '500'}}>Top 100</span>
-        </span>
+        <img style={styles.logo} src={logo} alt="One Shoe" />
+        <div style={styles.title}>
+          Christmas <span style={styles.strong}>Top 100</span>
+        </div>
       </div>
     )
 
@@ -31,9 +45,9 @@ class App extends Component {
         <AppBar
           title={Title}
           showMenuIconButton={false}
-          style={appBarStyle}
+          style={styles.appBar}
         />
-        <main style={mainStyle}>
+        <main style={styles.main}>
           <SongsList />
         </main>
       </div>
