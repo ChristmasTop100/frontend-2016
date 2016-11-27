@@ -35,7 +35,7 @@ class Background extends Component {
         width={this.state.width}
         height={this.state.height}
         styles={{
-          backgroundColor: '#212121',
+          backgroundColor: '#000',
           position: 'fixed',
           top: 0,
           left: 0,
