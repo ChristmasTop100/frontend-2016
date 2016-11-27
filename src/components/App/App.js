@@ -6,8 +6,7 @@ import logo from './logo.svg'
 
 const styles = {
   appBar: {
-    backgroundColor: '#0f1016',
-    opacity: 0.95
+    backgroundColor: 'rgba(15,16,22,0.95)'
   },
   logo: {
     marginRight: '10px'
