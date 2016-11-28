@@ -4,7 +4,7 @@ import './SongsTable.css'
 
 const styles = {
   table: {
-    backgroundColor: 'rgba(12,12,12,0.9)',
+    backgroundColor: 'rgba(15,15,15,0.9)',
     width: '100%',
     color: 'white',
     borderCollapse: 'collapse'
@@ -17,7 +17,7 @@ const styles = {
     textAlign: 'left'
   },
   tr: {
-    borderBottom: '1px solid rgba(255,255,255,0.025)',
+    borderBottom: '1px solid rgba(255,255,255,0.05)',
     lineHeight: 0.6
   },
   indexCol: {
