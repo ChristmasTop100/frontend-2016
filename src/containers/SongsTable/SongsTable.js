@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
+import './SongsTable.css'
 
 const styles = {
   table: {
-    backgroundColor: 'rgba(12,12,12,0.95)',
+    backgroundColor: 'rgba(12,12,12,0.9)',
     width: '100%',
     color: 'white',
     borderCollapse: 'collapse'
@@ -54,7 +55,7 @@ const styles = {
   }
 }
 
-class SongsList extends Component {
+class SongsTable extends Component {
   constructor() {
     super()
     this.state = {
@@ -143,4 +144,4 @@ class SongsList extends Component {
   }
 }
 
-export default SongsList
+export default SongsTable

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import Background from '../Background';
-import SongsList from '../../containers/SongsList';
+import SongsTable from '../../containers/SongsTable';
 import logo from './logo.svg'
 
 const styles = {
   appBar: {
-    backgroundColor: 'rgba(15,16,22,0.95)'
+    backgroundColor: 'rgba(15,16,22,0.9)'
   },
   logo: {
     marginRight: '10px'
@@ -47,7 +47,7 @@ class App extends Component {
           style={styles.appBar}
         />
         <main style={styles.main}>
-          <SongsList />
+          <SongsTable />
         </main>
       </div>
     );
