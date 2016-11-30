@@ -3,6 +3,7 @@
   width: 100%;
   color: white;
   border-collapse: collapse;
+  margin-bottom: 110px;
 }
 
 .SongsTable thead {
@@ -16,19 +17,25 @@
 .SongsTable tr {
   border-bottom: 1px solid rgba(255,255,255,0.05);
   line-height: 0.6;
+  transition: background-color 0.2s ease;
+}
+
+.SongsTable tr:hover {
+  background-color: rgba(255,255,255,0.05);
 }
 
 .SongsTable th:first-child {
-  width: 100px;
+  width: 60px;
+  position: relative;
 }
 
 .SongsTable th:nth-child(2) {
   padding: 15px 0;
-  width: 80px;
+  width: 60px;
 }
 
 .SongsTable .Index {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 300;
   color: rgba(255,255,255,0.7);
   padding: 15px 24px;
@@ -38,10 +45,44 @@
   padding: 15px 0;
 }
 
+.SongsTable .Cover div {
+  position: relative;
+}
+
 .SongsTable .Cover img {
   display: block;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
+}
+
+.SongsTable .Play {
+  display: none;
+  cursor: pointer;
+}
+
+.SongsTable tr:hover .Play {
+  display: block;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+}
+
+.SongsTable tr:hover .Play:before {
+  content: '';
+  width: 34px;
+  height: 34px;
+  border-radius: 35px;
+  background: rgba(0,0,0,0.75);
+  background-image: url('./triangle-right.svg');
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-position: 12px 10px;
+  border: 1px solid white;
+  outline: 0;
+  position: absolute;
+  top: 13px;
+  left: 13px;
 }
 
 .SongsTable .SongInfo {
@@ -54,8 +95,4 @@
   font-size: 16px;
   font-weight: 300;
   color: rgba(255,255,255,0.7);
-}
-
-.SongsTable button {
-  cursor: pointer;
 }

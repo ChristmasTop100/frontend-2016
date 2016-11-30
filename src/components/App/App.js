@@ -13,7 +13,6 @@ class App extends Component {
   }
 
   handleClick(songId) {
-    console.log(songId)
     this.setState({ songId })
   }
 

@@ -58,7 +58,6 @@ class SongsTable extends Component {
             <th>SONG</th>
             <th></th>
             <th>VOTES</th>
-            <th>PLAY</th>
           </tr>
         </thead>
         <tbody>
@@ -70,16 +69,16 @@ class SongsTable extends Component {
               <tr key={`song-${index}`}>
                 <td className="Index">{songIndex}</td>
                 <td className="Cover">
-                  <img src={song.image} alt="" />
+                  <div>
+                    <img src={song.image} alt="" />
+                    <span className="Play" onClick={() => this.props.onClick(songId)}></span>
+                  </div>
                 </td>
                 <td className="SongInfo">
                   <div>{song.title}</div>
                   <div>{song.artist}</div>
                 </td>
                 <td></td>
-                <td>
-                  <button onClick={() => this.props.onClick(songId)}>Play</button>
-                </td>
               </tr>
             )
           })}
