@@ -20,7 +20,7 @@
   transition: background-color 0.2s ease;
 }
 
-.SongsTable tr:hover {
+.SongsTable tbody tr:hover {
   background-color: rgba(255,255,255,0.05);
 }
 
@@ -60,15 +60,21 @@
   cursor: pointer;
 }
 
-.SongsTable tr:hover .Play {
+.SongsTable .Play {
   display: block;
   width: 60px;
   height: 60px;
   position: absolute;
   top: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-.SongsTable tr:hover .Play:before {
+.SongsTable tr:hover .Play {
+  opacity: 1;
+}
+
+.SongsTable .Play:before {
   content: '';
   width: 34px;
   height: 34px;
