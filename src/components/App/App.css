@@ -1,0 +1,27 @@
+.AppBarTitle img {
+  margin-right: 10px;
+}
+
+.AppBarTitle div {
+  display: inline;
+  color: #ed215d;
+  font-size: 23px;
+  font-weight: 300;
+}
+
+main {
+  max-width: 1110px;
+  margin: 60px auto;
+  padding: 0 15px;
+}
+
+strong {
+  font-weight: 500;
+}
+
+.SpotifyPlayer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid black;
+}

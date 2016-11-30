@@ -2,38 +2,27 @@ import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import Background from '../Background';
 import SongsTable from '../../containers/SongsTable';
+import './App.css'
 import logo from './logo.svg'
 
-const styles = {
-  appBar: {
-    backgroundColor: 'rgba(15,16,22,0.9)'
-  },
-  logo: {
-    marginRight: '10px'
-  },
-  title: {
-    display: 'inline',
-    color: '#ed215d',
-    fontSize: '23px',
-    fontWeight: '300'
-  },
-  main: {
-    maxWidth: '1110px',
-    margin: '60px auto',
-    padding: '0 15px'
-  },
-  strong: {
-    fontWeight: 500
-  }
-}
-
 class App extends Component {
+  constructor() {
+    super()
+    this.handleClick = this.handleClick.bind(this)
+    this.state = { songId: '7nQrUXVzVeYb0hAuabfmaP' }
+  }
+
+  handleClick(songId) {
+    console.log(songId)
+    this.setState({ songId })
+  }
+
   render() {
     const Title = (
-      <div>
-        <img style={styles.logo} src={logo} alt="One Shoe" />
-        <div style={styles.title}>
-          Christmas <span style={styles.strong}>Top 100</span>
+      <div className="AppBarTitle">
+        <img src={logo} alt="One Shoe" />
+        <div>
+          Christmas <strong>Top 100</strong>
         </div>
       </div>
     )
@@ -44,11 +33,18 @@ class App extends Component {
         <AppBar
           title={Title}
           showMenuIconButton={false}
-          style={styles.appBar}
+          style={{backgroundColor: 'rgba(15,16,22,0.9)'}}
         />
-        <main style={styles.main}>
-          <SongsTable />
+        <main>
+          <SongsTable onClick={this.handleClick} />
         </main>
+        <iframe
+          className="SpotifyPlayer"
+          src={`https://embed.spotify.com/?uri=spotify:track:${this.state.songId}`}
+          frameBorder="0"
+          allowTransparency="true"
+          height="80"
+        />
       </div>
     );
   }

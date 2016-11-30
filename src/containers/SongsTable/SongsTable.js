@@ -23,7 +23,7 @@ class SongsTable extends Component {
         image,
         url
       }
-    }`.replace(/\s+/g, '');
+    }`
     fetch(`https://back.christmastop100.nl/graphql?query=${query}`)
       .then(response => response.json())
       .then(json => {
@@ -78,7 +78,7 @@ class SongsTable extends Component {
                 </td>
                 <td></td>
                 <td>
-                  <button onClick={() => console.log(songId)}>Play</button>
+                  <button onClick={() => this.props.onClick(songId)}>Play</button>
                 </td>
               </tr>
             )
