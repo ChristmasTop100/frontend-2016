@@ -2,59 +2,6 @@ import React, { Component } from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
 import './SongsTable.css'
 
-const styles = {
-  table: {
-    backgroundColor: 'rgba(15,15,15,0.9)',
-    width: '100%',
-    color: 'white',
-    borderCollapse: 'collapse'
-  },
-  thead: {
-    letterSpacing: '4px',
-    color: '#3a3e53',
-    fontWeight: 700,
-    fontSize: '12px',
-    textAlign: 'left'
-  },
-  tr: {
-    borderBottom: '1px solid rgba(255,255,255,0.05)',
-    lineHeight: 0.6
-  },
-  indexCol: {
-    width: '100px'
-  },
-  songCol: {
-    padding: '15px 0'
-  },
-  index: {
-    fontSize: '30px',
-    fontWeight: '300',
-    color: 'rgba(255,255,255,0.7)',
-    padding: '15px 24px'
-  },
-  imageHolder: {
-    padding: '15px 0'
-  },
-  image: {
-    display: 'block',
-    width: '80px',
-    height: '80px'
-  },
-  song: {
-    lineHeight: 1.3,
-    fontSize: '24px',
-    padding: '0 24px'
-  },
-  artist: {
-    fontSize: '16px',
-    fontWeight: 300,
-    color: 'rgba(255,255,255,0.7)'
-  },
-  spotifyPlayer: {
-    display: 'block'
-  }
-}
-
 class SongsTable extends Component {
   constructor() {
     super()
@@ -90,56 +37,54 @@ class SongsTable extends Component {
       });
   }
 
-  render() {
-    if (!this.state.loaded) {
-      return (
-        <div>
-          <CircularProgress size={80} thickness={5} />
-        </div>
-      )
-    }
+  renderLoadingView() {
     return (
       <div>
-        <table style={styles.table}>
-          <thead style={styles.thead}>
-            <tr style={styles.tr}>
-              <th style={styles.indexCol}></th>
-              <th style={styles.songCol}>SONG</th>
-              <th></th>
-              <th>VOTES</th>
-              <th>PLAY</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.data.map((song, index) => {
-              const trackId = song.url.replace('https://open.spotify.com/track/', '')
-              return (
-                <tr key={`song-${index}`} style={styles.tr}>
-                  <td style={styles.index}>{index+1}</td>
-                  <td style={styles.imageHolder}>
-                    <img style={styles.image} src={song.image} alt="" />
-                  </td>
-                  <td style={styles.song}>
-                    <div>{song.title}</div>
-                    <div style={styles.artist}>{song.artist}</div>
-                  </td>
-                  <td></td>
-                  <td>
-                    <iframe
-                      src={`https://embed.spotify.com/?uri=spotify:track:${trackId}`}
-                      width="250"
-                      height="80"
-                      frameBorder="0"
-                      allowTransparency="true"
-                      style={styles.spotifyPlayer}
-                    />
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+        <CircularProgress size={80} thickness={5} />
       </div>
+    )
+  }
+
+  render() {
+    if (!this.state.loaded) {
+      return this.renderLoadingView()
+    }
+
+    return (
+      <table className="SongsTable">
+        <thead>
+          <tr>
+            <th></th>
+            <th>SONG</th>
+            <th></th>
+            <th>VOTES</th>
+            <th>PLAY</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.state.data.map((song, index) => {
+            const songIndex = index+1
+            const songId = song.url.replace('https://open.spotify.com/track/', '')
+
+            return (
+              <tr key={`song-${index}`}>
+                <td className="Index">{songIndex}</td>
+                <td className="Cover">
+                  <img src={song.image} alt="" />
+                </td>
+                <td className="SongInfo">
+                  <div>{song.title}</div>
+                  <div>{song.artist}</div>
+                </td>
+                <td></td>
+                <td>
+                  <button onClick={() => console.log(songId)}>Play</button>
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
     )
   }
 }
