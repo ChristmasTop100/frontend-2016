@@ -71,7 +71,7 @@ class SongsTable extends Component {
                 <td className="Cover">
                   <div>
                     <img src={song.image} alt="" />
-                    <span className="Play" onClick={() => this.props.onClick(songId)}></span>
+                    <button className="Play" onClick={() => this.props.onClick(songId)} />
                   </div>
                 </td>
                 <td className="SongInfo">

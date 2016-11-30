@@ -56,26 +56,8 @@
 }
 
 .SongsTable .Play {
-  display: none;
-  cursor: pointer;
-}
-
-.SongsTable .Play {
-  display: block;
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  top: 0;
   opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.SongsTable tr:hover .Play {
-  opacity: 1;
-}
-
-.SongsTable .Play:before {
-  content: '';
+  cursor: pointer;
   width: 34px;
   height: 34px;
   border-radius: 35px;
@@ -83,12 +65,21 @@
   background-image: url('./triangle-right.svg');
   background-size: 14px 14px;
   background-repeat: no-repeat;
-  background-position: 12px 10px;
+  background-position: 11px 9px;
   border: 1px solid white;
   outline: 0;
   position: absolute;
   top: 13px;
   left: 13px;
+  transition: all 0.2s ease;
+}
+
+.SongsTable .Play:hover {
+  border-color: #22d360;
+}
+
+.SongsTable tr:hover .Play {
+  opacity: 1;
 }
 
 .SongsTable .SongInfo {
