@@ -13,12 +13,16 @@ class SongsTable extends Component {
   }
 
   componentDidMount() {
-    XmasAPI.fetchSongs(this, function (json, context) {context.setState({
-      loaded: true,
-      data: json.data.Songs
-    })}, function (error, context) {
-      console.log(error);
-    });
+    XmasAPI.fetchSongs()
+      .then(json => {
+        this.setState({
+          loaded: true,
+          data: json.data.Songs
+        })
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   renderLoadingView() {
