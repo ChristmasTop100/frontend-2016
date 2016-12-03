@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
 import './SongsTable.css'
+import SongRow from '../../containers/SongRow';
 
 class SongsTable extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       loaded: false,
       data: []
@@ -21,10 +22,16 @@ class SongsTable extends Component {
         artist,
         title,
         image,
-        url
+        url,
+        votes {
+          score  
+        }
       }
     }`
-    fetch(`https://back.christmastop100.nl/graphql?query=${query}`)
+    fetch(`http://xmas.app/graphql?query=${query}`, {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    })
       .then(response => response.json())
       .then(json => {
         this.setState({
@@ -62,24 +69,9 @@ class SongsTable extends Component {
         </thead>
         <tbody>
           {this.state.data.map((song, index) => {
-            const songIndex = index+1
-            const songId = song.url.replace('https://open.spotify.com/track/', '')
-
+            const songIndex = index + 1;
             return (
-              <tr key={`song-${index}`}>
-                <td className="Index">{songIndex}</td>
-                <td className="Cover">
-                  <div>
-                    <img src={song.image} alt="" />
-                    <button className="Play" onClick={() => this.props.onClick(songId)} />
-                  </div>
-                </td>
-                <td className="SongInfo">
-                  <div>{song.title}</div>
-                  <div>{song.artist}</div>
-                </td>
-                <td></td>
-              </tr>
+                <SongRow song={song} songIndex={songIndex} key={`song-${songIndex}`} playHandler={this.props.OnClick}/>
             )
           })}
         </tbody>
