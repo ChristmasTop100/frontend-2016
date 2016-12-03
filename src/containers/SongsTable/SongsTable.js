@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
-import './SongsTable.css'
+import './SongsTable.css';
+import XmasAPI from '../../utils/XmasAPI'
 
 class SongsTable extends Component {
   constructor() {
@@ -12,29 +13,12 @@ class SongsTable extends Component {
   }
 
   componentDidMount() {
-    this.fetchData()
-  }
-
-  fetchData() {
-    const query = `{
-      Songs {
-        artist,
-        title,
-        image,
-        url
-      }
-    }`
-    fetch(`https://back.christmastop100.nl/graphql?query=${query}`)
-      .then(response => response.json())
-      .then(json => {
-        this.setState({
-          loaded: true,
-          data: json.data.Songs
-        })
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    XmasAPI.fetchSongs(this, function (json, context) {context.setState({
+      loaded: true,
+      data: json.data.Songs
+    })}, function (error, context) {
+      console.log(error);
+    });
   }
 
   renderLoadingView() {
