@@ -28,7 +28,7 @@ class SongsTable extends Component {
         }
       }
     }`
-    fetch(`http://xmas.app/graphql?query=${query}`, {
+    fetch(`https://back.christmastop100.nl/graphql?query=${query}`, {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     })
