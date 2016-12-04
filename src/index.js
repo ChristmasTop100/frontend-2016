@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router, browserHistory } from 'react-router'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import App from './components/App';
+import routes from './routes'
 import './index.css';
 
 // Needed for onTouchTap
@@ -11,7 +12,7 @@ injectTapEventPlugin();
 
 ReactDOM.render(
   <MuiThemeProvider>
-    <App />
+    <Router history={browserHistory} routes={routes} />
   </MuiThemeProvider>,
   document.getElementById('root')
 );
