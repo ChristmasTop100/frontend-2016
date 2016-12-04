@@ -4,12 +4,15 @@ import './SongRow.css'
 class SongRow extends Component {
   constructor(props) {
     super(props);
-    if (! props.song.votes.length) {
-      props.song.votes = [{score: 0}];
+    let score = 0;
+    if (props.song.votes.length > 0) {
+      score = props.song.votes[0].score;
     }
+    props.song.votes = [];
 
     this.state = {
       song: props.song,
+      score: score,
       songIndex: props.songIndex
     }
 
@@ -19,13 +22,13 @@ class SongRow extends Component {
 
   votePlus() {
     this.setState(prevState => ({
-      song: prevState.song.votes[0].score + 1
+      score: prevState.score + 1
     }))
   }
 
   voteMin() {
     this.setState(prevState => ({
-      song: prevState.song.votes[0].score - 1
+      score: prevState.score - 1
     }))
   }
 
@@ -48,7 +51,7 @@ class SongRow extends Component {
           <td>
             <div className="VotePlus" onClick={this.votePlus}>+</div>
             <div className="VoteMin" onClick={this.voteMin}>-</div>
-            <div className="VoteScore">{this.state.song.votes[0].score}</div>
+            <div className="VoteScore">{this.state.score}</div>
           </td>
       </tr>
     )
