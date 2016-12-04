@@ -1,0 +1,15 @@
+.Login {
+  margin: 0 auto;
+  max-width: 350px;
+  padding: 24px;
+  background: white;
+}
+
+.Login hr:last-child {
+  border-color: rgb(255, 23, 68) !important;
+}
+
+.Login .Submit {
+  margin-top: 40px;
+  color: white !important;
+}
