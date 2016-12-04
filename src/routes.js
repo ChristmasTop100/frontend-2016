@@ -4,21 +4,24 @@ import App from './components/App'
 import Login from './components/Login'
 import SongsOverview from './containers/SongsOverview'
 
-// TODO: make a function that checks auth state
-const requireAuth = (nextState, replace) => {
-  /* if (!auth.loggedIn()) {
-    replace({
-      pathname: '/login',
-      state: { nextPathname: nextState.location.pathname }
-    })
-  } */
+const getRoutes = store => {
+  const requireAuth = (nextState, replace) => {
+    const state = store.getState()
+    if (!state.user.authenticated) {
+      replace({
+        pathname: '/login',
+        state: { nextPathname: nextState.location.pathname }
+      })
+    }
+  }
+
+  return (
+    <Route path="/" component={App}>
+      <IndexRoute component={SongsOverview} onEnter={requireAuth} />
+      <Route path="login" component={Login} />
+    </Route>
+  )
 }
 
-const routes = (
-  <Route path="/" component={App}>
-    <IndexRoute component={SongsOverview} onEnter={requireAuth} />
-    <Route path="login" component={Login} />
-  </Route>
-)
 
-export default routes
+export default getRoutes

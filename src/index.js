@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import christmasApp from './reducers'
 import { Router, browserHistory } from 'react-router'
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import {redA400} from 'material-ui/styles/colors';
+import { redA400 } from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import routes from './routes'
+import getRoutes from './routes'
 import './index.css';
 
 // Needed for onTouchTap
@@ -18,10 +21,15 @@ const muiTheme = getMuiTheme({
   }
 })
 
+let store = createStore(christmasApp)
+const routes = getRoutes(store)
+
 const AppProvider = () => (
-  <MuiThemeProvider muiTheme={muiTheme}>
-    <Router history={browserHistory} routes={routes} />
-  </MuiThemeProvider>
+  <Provider store={store}>
+    <MuiThemeProvider muiTheme={muiTheme}>
+      <Router history={browserHistory} routes={routes} />
+    </MuiThemeProvider>
+  </Provider>
 )
 
 ReactDOM.render(

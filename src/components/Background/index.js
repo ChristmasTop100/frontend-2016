@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Snowfetti from '../Snowfetti';
+import Snowfetti from './Snowfetti';
 
 class Background extends Component {
   constructor() {
