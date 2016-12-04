@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NumberIncrementer from '../../components/NumberIncrementer'
 import './SongRow.css'
 
 class SongRow extends Component {
@@ -49,9 +50,11 @@ class SongRow extends Component {
           <div>{this.state.song.artist}</div>
         </td>
           <td>
-            <div className="VotePlus" onClick={this.votePlus}>+</div>
-            <div className="VoteMin" onClick={this.voteMin}>-</div>
-            <div className="VoteScore">{this.state.score}</div>
+            <NumberIncrementer
+              plusClick={this.votePlus}
+              minClick={this.voteMin}
+              value={this.state.score}
+            />
           </td>
       </tr>
     )
