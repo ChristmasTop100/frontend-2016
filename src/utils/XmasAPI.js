@@ -5,7 +5,10 @@ class XmasAPI {
         artist,
         title,
         image,
-        url
+        url,
+        votes {
+          score
+        }
       }
     }`
     return fetch(`https://back.christmastop100.nl/graphql?query=${query}`)
