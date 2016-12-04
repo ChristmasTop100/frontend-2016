@@ -1,12 +1,28 @@
+.NumberIncrementer {
+  display: flex;
+}
+
 .NumberIncrementer .Value {
   display: inline-block;
   width: 40px;
-  height: 24px;
-  line-height: 24px;
+  height: 30px;
+  line-height: 30px;
   background: white;
   color: black;
   text-align: center;
-  font-size: 14px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.NumberIncrementer .Buttons {
+  display: flex;
+  flex-direction: column;
+  width: 24px;
+  font-weight: 300;
+}
+
+.NumberIncrementer .Min button > div {
+  background-color: rgba(0,0,0,0.15) !important;
 }
 
 .NumberIncrementer .Min,
@@ -16,12 +32,18 @@
   box-shadow: none !important;
 }
 
-.NumberIncrementer .Min button {
+.NumberIncrementer .Min button,
+.NumberIncrementer .Min span,
+.NumberIncrementer .Min div {
+  border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }
 
-.NumberIncrementer .Plus button {
+.NumberIncrementer .Plus button,
+.NumberIncrementer .Plus span,
+.NumberIncrementer .Plus div {
   border-top-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
