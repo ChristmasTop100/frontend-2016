@@ -9,12 +9,9 @@ class SongRow extends Component {
     if (props.song.votes.length > 0) {
       score = props.song.votes[0].score;
     }
-    props.song.votes = [];
 
     this.state = {
-      song: props.song,
-      score: score,
-      songIndex: props.songIndex
+      score: score
     }
 
     this.votePlus = this.votePlus.bind(this);
@@ -34,20 +31,20 @@ class SongRow extends Component {
   }
 
   render() {
-    const songId = this.state.song.url.replace('https://open.spotify.com/track/', '');
+    const songId = this.props.song.url.replace('https://open.spotify.com/track/', '');
 
     return (
       <tr>
-        <td className="Index">{this.state.songIndex}</td>
+        <td className="Index">{this.props.songIndex}</td>
         <td className="Cover">
           <div>
-            <img src={this.state.song.image} alt="" />
+            <img src={this.props.song.image} alt="" />
             <button className="Play" onClick={() => this.props.playHandler(songId)} />
           </div>
         </td>
         <td className="SongInfo">
-          <div>{this.state.song.title}</div>
-          <div>{this.state.song.artist}</div>
+          <div>{this.props.song.title}</div>
+          <div>{this.props.song.artist}</div>
         </td>
           <td>
             <NumberIncrementer
