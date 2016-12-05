@@ -57,7 +57,7 @@ class SongsTable extends Component {
           {this.state.data.map((song, index) => {
             const songIndex = index + 1;
             return (
-              <SongRow song={song} songIndex={songIndex} key={`song-${songIndex}`} playHandler={this.props.OnClick}/>
+              <SongRow song={song} songIndex={songIndex} key={`song-${songIndex}`} playHandler={this.props.onClick}/>
             )
           })}
         </tbody>
