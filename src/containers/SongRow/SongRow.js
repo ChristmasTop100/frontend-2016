@@ -5,13 +5,9 @@ import './SongRow.css'
 class SongRow extends Component {
   constructor(props) {
     super(props);
-    let score = 0;
-    if (props.song.votes.length > 0) {
-      score = props.song.votes[0].score;
-    }
 
     this.state = {
-      score: score
+      score: props.song.votes.length > 0 ? props.song.votes[0].score : 0
     }
 
     this.votePlus = this.votePlus.bind(this);
