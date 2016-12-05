@@ -19,6 +19,7 @@ class SongRow extends Component {
       this.setState(prevState => ({
         score: prevState.score + 1
       }))
+      this.submitVote()
     }
   }
 
@@ -27,7 +28,18 @@ class SongRow extends Component {
       this.setState(prevState => ({
         score: prevState.score - 1
       }))
+      this.submitVote()
     }
+  }
+
+  submitVote() {
+    if (typeof this.timeout !== 'undefined') {
+      clearTimeout(this.timeout)
+    }
+    this.timeout = setTimeout(() => {
+      // fetch to POST data here...
+      console.log('Score:',this.state.score)
+    }, 500)
   }
 
   render() {
