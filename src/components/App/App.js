@@ -23,7 +23,7 @@ class App extends Component {
           showMenuIconButton={false}
           style={{backgroundColor: 'rgba(15,16,22,0.9)'}}
         />
-        <main>{this.props.children}</main>  
+        <main>{this.props.children}</main>
       </div>
     );
   }

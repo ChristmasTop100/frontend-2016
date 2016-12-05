@@ -4,46 +4,48 @@
 
 .NumberIncrementer .Value {
   display: inline-block;
-  width: 40px;
-  height: 30px;
-  line-height: 30px;
+  width: 50px;
+  height: 36px;
+  line-height: 36px;
   background: white;
   color: black;
   text-align: center;
-  border-top-left-radius: 2px;
-  border-bottom-left-radius: 2px;
+  border-radius: 2px;
+  margin-right: 4px;
 }
 
 .NumberIncrementer .Buttons {
+  width: 24px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+.NumberIncrementer button {
+  display: block;
+  cursor: pointer;
   width: 24px;
-  font-weight: 300;
+  height: 18px;
+  background: rgb(255, 23, 68);
+  border: none;
+  border-radius: 3px;
+  outline: 0;
+  font-size: 16px;
+  line-height: 14px;
+  color: white;
 }
 
-.NumberIncrementer .Min button > div {
-  background-color: rgba(0,0,0,0.15) !important;
+.NumberIncrementer button:first-child {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
-.NumberIncrementer .Min,
-.NumberIncrementer .Plus {
-  vertical-align: top;
-  min-width: 0 !important;
-  box-shadow: none !important;
+.NumberIncrementer button:last-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background: rgba(255, 23, 68, 0.75);
 }
 
-.NumberIncrementer .Min button,
-.NumberIncrementer .Min span,
-.NumberIncrementer .Min div {
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-}
-
-.NumberIncrementer .Plus button,
-.NumberIncrementer .Plus span,
-.NumberIncrementer .Plus div {
-  border-top-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
+.NumberIncrementer button:active {
+  background: rgb(255, 116, 143);
 }

@@ -15,15 +15,19 @@ class SongRow extends Component {
   }
 
   votePlus() {
-    this.setState(prevState => ({
-      score: prevState.score + 1
-    }))
+    if (this.state.score < 20) {
+      this.setState(prevState => ({
+        score: prevState.score + 1
+      }))
+    }
   }
 
   voteMin() {
-    this.setState(prevState => ({
-      score: prevState.score - 1
-    }))
+    if (this.state.score > 0) {
+      this.setState(prevState => ({
+        score: prevState.score - 1
+      }))
+    }
   }
 
   render() {
