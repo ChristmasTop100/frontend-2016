@@ -1,4 +1,5 @@
 .Login {
+  position: relative;
   margin: 0 auto;
   max-width: 350px;
   padding: 24px;
@@ -12,4 +13,9 @@
 .Login .Submit {
   margin-top: 40px;
   color: white !important;
+}
+.Login .FormError {
+  color: red;
+  margin: 0;
+  padding: 1em 0;
 }
