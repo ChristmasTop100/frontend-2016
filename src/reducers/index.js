@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { LOGIN_REQUEST } from '../actions'
+import { LOGIN_SUCCESS } from '../actions'
 
 const initialState = {
   authenticated: false
@@ -7,9 +7,10 @@ const initialState = {
 
 const user = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_REQUEST:
+    case LOGIN_SUCCESS:
       return {
-        authenticated: true
+        authenticated: true,
+        token: action.token
       }
     default:
       return state

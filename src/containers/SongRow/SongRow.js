@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import NumberIncrementer from '../../components/NumberIncrementer'
 import './SongRow.css'
 
@@ -38,6 +39,7 @@ class SongRow extends Component {
     }
     this.timeout = setTimeout(() => {
       // fetch to POST data here...
+      console.log('Token:',this.props.token) // Taken from redux store
       console.log('Score:',this.state.score)
     }, 500)
   }
@@ -70,4 +72,8 @@ class SongRow extends Component {
   }
 }
 
-export default SongRow
+const mapStateToProps = state => ({
+  token: state.user.token
+})
+
+export default connect(mapStateToProps)(SongRow)
