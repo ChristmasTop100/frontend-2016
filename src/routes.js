@@ -1,7 +1,7 @@
 import React from 'react';
 import { IndexRoute, Route } from 'react-router'
 import App from './components/App'
-import Login from './components/Login'
+import Login from './containers/Login'
 import SongsOverview from './containers/SongsOverview'
 
 const getRoutes = store => {
