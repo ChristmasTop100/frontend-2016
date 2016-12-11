@@ -2,6 +2,7 @@ class XmasAPI {
   static fetchSongs() {
     const query = `{
       Songs {
+        id,
         artist,
         title,
         image,
@@ -33,6 +34,21 @@ class XmasAPI {
       ) {
         name,
         id
+      }
+    }`
+
+    return this.query(query)
+  }
+
+  static updateVote(songID, score) {
+    const query = `mutation {
+      UpdateVote (
+        song_id: "${songID}",
+        score: :"${score}"
+      ) {
+        song_id,
+        user_id,
+        score
       }
     }`
 
