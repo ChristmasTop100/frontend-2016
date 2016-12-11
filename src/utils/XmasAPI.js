@@ -1,5 +1,5 @@
 class XmasAPI {
-  static fetchSongs() {
+  static fetchSongs(token = null) {
     const query = `{
       Songs {
         id,
@@ -12,7 +12,7 @@ class XmasAPI {
         }
       }
     }`
-    return this.query(query)
+    return this.query(query, token)
   }
 
   static loginUser(username, password) {
@@ -40,11 +40,11 @@ class XmasAPI {
     return this.query(query)
   }
 
-  static updateVote(songID, score) {
+  static updateVote(songId, score, token) {
     const query = `mutation {
       UpdateVote (
-        song_id: "${songID}",
-        score: :"${score}"
+        song_id: ${songId},
+        score: ${score}
       ) {
         song_id,
         user_id,
@@ -52,14 +52,20 @@ class XmasAPI {
       }
     }`
 
-    return this.query(query)
+    return this.query(query, token)
   }
 
-  static query(query) {
-    return fetch(`https://back.christmastop100.nl/graphql?query=${query}`, {
+  static query(query, token = null) {
+    const headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-    })
+    }
+
+    if (token != null) {
+      headers.Authorization = `Bearer ${token}`
+    }
+
+    return fetch(`https://back.christmastop100.nl/graphql?query=${query}`, { headers })
       .then(response => response.json())
   }
 }

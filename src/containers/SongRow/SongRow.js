@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import NumberIncrementer from '../../components/NumberIncrementer'
 import './SongRow.css'
+import XmasAPI from '../../utils/XmasAPI'
 
 class SongRow extends Component {
   constructor(props) {
@@ -38,9 +39,10 @@ class SongRow extends Component {
       clearTimeout(this.timeout)
     }
     this.timeout = setTimeout(() => {
-      // fetch to POST data here...
-      console.log('Token:', this.props.token) // Taken from redux store
-      console.log('Score:', this.state.score)
+      XmasAPI.updateVote(this.props.song.id, this.state.score, this.props.token)
+        .catch((error) => {
+          console.log(error)
+        })
     }, 500)
   }
 
@@ -74,8 +76,15 @@ class SongRow extends Component {
 
 SongRow.propTypes = {
   playHandler: PropTypes.func.isRequired,
-  song: PropTypes.objectOf(PropTypes.string).isRequired,
-  songIndex: PropTypes.string.isRequired,
+  song: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    artist: PropTypes.string,
+    image: PropTypes.string,
+    url: PropTypes.string,
+    votes: PropTypes.array,
+  }).isRequired,
+  songIndex: PropTypes.number.isRequired,
   token: PropTypes.string.isRequired,
 }
 

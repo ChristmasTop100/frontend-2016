@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 import CircularProgress from 'material-ui/CircularProgress'
 import SongRow from '../../containers/SongRow'
 import XmasAPI from '../../utils/XmasAPI'
@@ -18,7 +19,7 @@ class SongsTable extends Component {
   }
 
   fetchData() {
-    XmasAPI.fetchSongs()
+    XmasAPI.fetchSongs(this.props.token)
       .then((json) => {
         this.setState({
           loaded: true,
@@ -60,6 +61,11 @@ class SongsTable extends Component {
 
 SongsTable.propTypes = {
   onClick: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
 }
 
-export default SongsTable
+const mapStateToProps = state => ({
+  token: state.user.token,
+})
+
+export default connect(mapStateToProps)(SongsTable)
