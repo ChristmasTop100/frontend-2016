@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { getParticleValues } from '../utils/profiles';
 
 /**

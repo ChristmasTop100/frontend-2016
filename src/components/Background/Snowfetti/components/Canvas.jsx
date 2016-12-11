@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { generateParticles } from '../utils/particle';
 
@@ -154,7 +155,7 @@ export default React.createClass({
 	},
 
 	componentDidUpdate () {
-		
+
 	},
 
 	render () {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react'
 import './NumberIncrementer.css'
 
 const NumberIncrementer = ({ minClick, plusClick, value }) => (
@@ -20,5 +20,11 @@ const NumberIncrementer = ({ minClick, plusClick, value }) => (
     </div>
   </div>
 )
+
+NumberIncrementer.propTypes = {
+  minClick: PropTypes.func.isRequired,
+  plusClick: PropTypes.func.isRequired,
+  value: PropTypes.number.isRequired,
+}
 
 export default NumberIncrementer

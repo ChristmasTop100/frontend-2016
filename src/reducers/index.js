@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import { LOGIN_SUCCESS } from '../actions'
 
 const initialState = {
-  authenticated: false
+  authenticated: false,
 }
 
 const user = (state = initialState, action) => {
@@ -10,7 +10,7 @@ const user = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         authenticated: true,
-        token: action.token
+        token: action.token,
       }
     default:
       return state
@@ -18,7 +18,7 @@ const user = (state = initialState, action) => {
 }
 
 const christmasApp = combineReducers({
-  user
+  user,
 })
 
 export default christmasApp

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import randomHex from 'random-hex';
 
 const { random, floor } = Math;

@@ -1,3 +1,3 @@
-import Canvas from './components/Canvas';
+import Canvas from './components/Canvas'
 
-export default Canvas;
+export default Canvas

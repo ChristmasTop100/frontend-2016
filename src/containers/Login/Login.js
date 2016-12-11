@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { receiveLogin } from '../../actions'
 import { browserHistory } from 'react-router'
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
+import { receiveLogin } from '../../actions'
 import XmasAPI from '../../utils/XmasAPI'
 import CircularElements from '../Login/CircularElements'
 import './Login.css'
@@ -16,38 +16,35 @@ class Login extends Component {
       emailError: null,
       passwordError: null,
       formError: null,
-      showCircularElement: false
+      showCircularElement: false,
     }
   }
 
   handleLogin() {
-    const username = this.refs.username
-    const password = this.refs.password
+    const username = this.usernameInput
+    const password = this.passwordInput
 
     this.setState({ showCircularElements: true })
 
     XmasAPI.loginUser(username.getValue(), password.getValue())
-      .then(json => {
+      .then((json) => {
         if (json.data.CreateSession) {
           this.setState({
             loaded: true,
             emailError: null,
             passwordError: null,
             formError: null,
-            showCircularElements: false
+            showCircularElements: false,
           })
 
           this.props.dispatch(receiveLogin(json.data.CreateSession.token))
           browserHistory.push('/')
-        }
-        else {
-          this.setState({
-            showCircularElements: false
-          })
+        } else {
+          this.setState({ showCircularElements: false })
           // Bad. validation or result not found.
           if (json.errors.length) {
-            for (var i=0; i < json.errors.length; i++) {
-              var error = json.errors[i];
+            for (let i = 0; i < json.errors.length; i += 1) {
+              const error = json.errors[i]
               if (error.validation) {
                 if (error.validation.email) {
                   this.setState({ emailError: error.validation.email[0] })
@@ -55,20 +52,18 @@ class Login extends Component {
                 if (error.validation.password) {
                   this.setState({ passwordError: error.validation.password[0] })
                 }
-              }
-              else if (error.message) {
+              } else if (error.message) {
                 this.setState({
                   formError: error.message,
                   passwordError: null,
-                  emailError: null
+                  emailError: null,
                 })
               }
             }
           }
-
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error)
       })
   }
@@ -82,29 +77,33 @@ class Login extends Component {
         { this.state.showCircularElements && <CircularElements /> }
         <TextField
           floatingLabelText="Username"
-          fullWidth={true}
-          required={true}
-          ref="username"
+          fullWidth
+          required
+          ref={(input) => { this.usernameInput = input }}
           errorText={this.state.emailError}
         />
         <TextField
           floatingLabelText="Password"
-          fullWidth={true}
-          required={true}
-          ref="password"
+          fullWidth
+          required
+          ref={(input) => { this.passwordInput = input }}
           type="password"
           errorText={this.state.passwordError}
         />
         <RaisedButton
           className="Submit"
           label="Login"
-          primary={true}
-          fullWidth={true}
+          primary
+          fullWidth
           onClick={this.handleLogin}
         />
       </div>
     )
   }
+}
+
+Login.propTypes = {
+  dispatch: PropTypes.func,
 }
 
 export default connect()(Login)

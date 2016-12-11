@@ -1,5 +1,5 @@
 class XmasAPI {
-  static fetchSongs(context, callback, errorCallback) {
+  static fetchSongs() {
     const query = `{
       Songs {
         artist,

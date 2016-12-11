@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import SongsTable from '../../containers/SongsTable';
+import React, { Component } from 'react'
+import SongsTable from '../../containers/SongsTable'
 import './SongsOverview.css'
 
 class SongsOverview extends Component {
@@ -25,7 +25,7 @@ class SongsOverview extends Component {
           height="80"
         />
       </div>
-    );
+    )
   }
 }
 
