@@ -6,7 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import { receiveLogin } from '../../actions'
 import XmasAPI from '../../utils/XmasAPI'
 import CircularElements from '../Login/CircularElements'
-import './Login.css'
+import './OneTimeLogin.css'
 
 class OneTimeLogin extends Component {
   constructor(props) {
@@ -23,13 +23,13 @@ class OneTimeLogin extends Component {
   handleLogin() {
     const username = this.usernameInput
     const password = this.passwordInput
-    const token = '??????????'
+    const token = this.props.params.splat
 
     this.setState({ showCircularElements: true })
 
     XmasAPI.oneTimeLogin(username.getValue(), password.getValue(), token)
       .then((json) => {
-        if (json.data.oneTimeLogin) {
+        if (json.data.UpdateUser) {
           this.setState({
             loaded: true,
             emailError: null,
@@ -39,12 +39,11 @@ class OneTimeLogin extends Component {
           })
 
           XmasAPI.loginUser(username.getValue(), password.getValue())
-            .then((json) => {
-              if (json.data.loginUser) {
-                this.props.dispatch(receiveLogin(json.data.CreateSession.token))
+            .then((loginJson) => {
+              if (loginJson.data.CreateSession) {
+                this.props.dispatch(receiveLogin(loginJson.data.CreateSession.token))
                 browserHistory.push('/')
-              }
-              else {
+              } else {
                 // If automatic login doesn't work, let the user try himself.
                 browserHistory.push('/login')
               }
@@ -102,7 +101,7 @@ class OneTimeLogin extends Component {
         />
         <RaisedButton
           className="Submit"
-          label="Login"
+          label="Activate account"
           primary
           fullWidth
           onClick={this.handleLogin}
@@ -114,6 +113,7 @@ class OneTimeLogin extends Component {
 
 OneTimeLogin.propTypes = {
   dispatch: PropTypes.func,
+  params: PropTypes.objectOf(PropTypes.string),
 }
 
 export default connect()(OneTimeLogin)

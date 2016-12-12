@@ -3,6 +3,7 @@ import { IndexRoute, Route } from 'react-router'
 import App from './components/App'
 import Login from './containers/Login'
 import SongsOverview from './containers/SongsOverview'
+import OneTimeLogin from './containers/OneTimeLogin'
 
 const getRoutes = (store) => {
   const requireAuth = (nextState, replace) => {
