@@ -2,8 +2,9 @@ import React from 'react'
 import { IndexRoute, Route } from 'react-router'
 import App from './components/App'
 import Login from './containers/Login'
-import SongsOverview from './containers/SongsOverview'
 import OneTimeLogin from './containers/OneTimeLogin'
+import Home from './containers/Home'
+
 
 const getRoutes = (store) => {
   const requireAuth = (nextState, replace) => {
@@ -18,7 +19,7 @@ const getRoutes = (store) => {
 
   return (
     <Route path="/" component={App}>
-      <IndexRoute component={SongsOverview} onEnter={requireAuth} />
+      <IndexRoute component={Home} onEnter={requireAuth} />
       <Route path="login" component={Login} />
       <Route path="auth/otl/*" component={OneTimeLogin} />
     </Route>

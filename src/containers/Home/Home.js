@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import SongsTable from '../../containers/SongsTable'
-import './SongsOverview.css'
+import './Home.css'
 
-class SongsOverview extends Component {
+class Home extends Component {
   constructor() {
     super()
     this.handleClick = this.handleClick.bind(this)
@@ -29,4 +29,4 @@ class SongsOverview extends Component {
   }
 }
 
-export default SongsOverview
+export default Home
