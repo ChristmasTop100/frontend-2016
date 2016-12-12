@@ -11,6 +11,7 @@
   background-size: 30px 34px;
   width: 127px;
   height: 34px;
+  margin-left: 3px;
 }
 
 .AppBarTitle .Logo::before {
@@ -26,15 +27,17 @@
 
 .AppBarTitle .Logo::after {
   content: '';
-  width: 100px;
-  height: 100px;
+  width: 29px;
+  height: 29px;
   position: absolute;
   background-image: url('./christmas-hat.svg');
   background-size: auto 29px;
   background-repeat: no-repeat;
-  left: 5px;
+  background-position: 0 1px;
+  left: -9px;
   transform: rotate(-30deg);
-  top: -36px;
+  top: -15px;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
 }
 
 .AppBarTitle .Title {
