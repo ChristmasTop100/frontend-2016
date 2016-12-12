@@ -1,7 +1,7 @@
 import React from 'react'
 import { IndexRoute, Route } from 'react-router'
 import jwtDecode from 'jwt-decode'
-import App from './components/App'
+import App from './containers/App'
 import Login from './containers/Login'
 import OneTimeLogin from './containers/OneTimeLogin'
 import Home from './containers/Home'
