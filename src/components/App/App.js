@@ -8,7 +8,7 @@ const App = ({ children }) => {
   const Title = (
     <div className="AppBarTitle">
       <div className="Logo" />
-      <div className="Title" style={{ color: redA400 }}>Christmas Top 100</div>
+      <div className="Title" style={{ color: redA400 }}>Christmas <strong>Top 100</strong></div>
     </div>
   )
 

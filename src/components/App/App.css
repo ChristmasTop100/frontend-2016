@@ -44,6 +44,10 @@
   display: inline;
   margin-left: 6px;
   font-size: 21px;
+  font-weight: 300;
+}
+
+.AppBarTitle .Title strong {
   font-weight: 500;
 }
 
