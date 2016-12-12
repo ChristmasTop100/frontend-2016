@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react'
 import AppBar from 'material-ui/AppBar'
+import { redA400 } from 'material-ui/styles/colors'
 import Background from '../Background'
 import './App.css'
-import logo from './logo.svg'
 
 const App = ({ children }) => {
   const Title = (
     <div className="AppBarTitle">
-      <img src={logo} alt="One Shoe" />
-      <div>Christmas <strong>Top 100</strong></div>
+      <div className="Logo" />
+      <div className="Title" style={{ color: redA400 }}>Christmas Top 100</div>
     </div>
   )
 

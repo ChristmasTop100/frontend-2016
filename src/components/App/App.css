@@ -1,20 +1,51 @@
-.AppBarTitle img {
-  margin-right: 10px;
+.AppBarTitle {
+  display: flex;
+  align-items: center;
 }
 
-.AppBarTitle div {
+.AppBarTitle .Logo {
+  position: relative;
+  display: inline-block;
+  background-image: url('./logo-icon.svg');
+  background-repeat: no-repeat;
+  background-size: 30px 34px;
+  width: 127px;
+  height: 34px;
+}
+
+.AppBarTitle .Logo::before {
+  content: '';
+  width: 93px;
+  height: 20px;
+  position: absolute;
+  background-image: url('./logo.svg');
+  background-repeat: no-repeat;
+  top: 5px;
+  left: 34px;
+}
+
+.AppBarTitle .Logo::after {
+  content: '';
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background-image: url('./christmas-hat.svg');
+  background-size: auto 29px;
+  background-repeat: no-repeat;
+  left: 5px;
+  transform: rotate(-30deg);
+  top: -36px;
+}
+
+.AppBarTitle .Title {
   display: inline;
-  color: #ed215d;
-  font-size: 23px;
-  font-weight: 300;
+  margin-left: 10px;
+  font-size: 22px;
+  font-weight: 400;
 }
 
 main {
   max-width: 1110px;
   margin: 60px auto;
   padding: 0 15px;
-}
-
-strong {
-  font-weight: 500;
 }
