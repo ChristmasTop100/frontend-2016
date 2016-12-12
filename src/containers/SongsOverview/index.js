@@ -1,3 +1,3 @@
-import SongsOverview from './SongsOverview'
+import Home from './Home'
 
-export default SongsOverview
+export default Home
