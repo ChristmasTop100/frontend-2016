@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+import { persistStore, autoRehydrate } from 'redux-persist'
 import { Router, browserHistory } from 'react-router'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import { redA400 } from 'material-ui/styles/colors'
@@ -21,15 +22,38 @@ const muiTheme = getMuiTheme({
   },
 })
 
-const store = createStore(christmasApp)
+/* eslint-disable no-underscore-dangle */
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const store = createStore(christmasApp, undefined, composeEnhancers(
+  applyMiddleware(),
+  autoRehydrate(),
+))
 const routes = getRoutes(store)
 
-const AppProvider = () => (
-  <Provider store={store}>
-    <MuiThemeProvider muiTheme={muiTheme}>
-      <Router history={browserHistory} routes={routes} />
-    </MuiThemeProvider>
-  </Provider>
-)
+class AppProvider extends Component {
+  constructor() {
+    super()
+    this.state = { rehydrated: false }
+  }
+
+  componentWillMount() {
+    persistStore(store, {}, () => {
+      this.setState({ rehydrated: true })
+    })
+  }
+
+  render() {
+    if (!this.state.rehydrated) {
+      return <div>Loading...</div>
+    }
+    return (
+      <Provider store={store}>
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <Router history={browserHistory} routes={routes} />
+        </MuiThemeProvider>
+      </Provider>
+    )
+  }
+}
 
 ReactDOM.render(<AppProvider />, document.getElementById('root'))
