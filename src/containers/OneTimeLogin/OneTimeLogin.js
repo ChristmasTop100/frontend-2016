@@ -20,7 +20,8 @@ class OneTimeLogin extends Component {
     }
   }
 
-  handleLogin() {
+  handleLogin(e) {
+    e.preventDefault()
     const username = this.usernameInput
     const password = this.passwordInput
     const token = this.props.params.token
@@ -80,7 +81,7 @@ class OneTimeLogin extends Component {
 
   render() {
     return (
-      <div className="Login">
+      <form className="Login" onSubmit={this.handleLogin}>
         {this.state.formError &&
           <p className="FormError">{this.state.formError}</p>
         }
@@ -102,12 +103,12 @@ class OneTimeLogin extends Component {
         />
         <RaisedButton
           className="Submit"
+          type="submit"
           label="Activate account"
           primary
           fullWidth
-          onClick={this.handleLogin}
         />
-      </div>
+      </form>
     )
   }
 }

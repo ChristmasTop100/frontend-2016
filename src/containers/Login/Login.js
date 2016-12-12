@@ -20,7 +20,8 @@ class Login extends Component {
     }
   }
 
-  handleLogin() {
+  handleLogin(e) {
+    e.preventDefault()
     const username = this.usernameInput
     const password = this.passwordInput
 
@@ -71,7 +72,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="Login">
+      <form className="Login" onSubmit={this.handleLogin}>
         {this.state.formError &&
           <p className="FormError">{this.state.formError}</p>
         }
@@ -93,12 +94,12 @@ class Login extends Component {
         />
         <RaisedButton
           className="Submit"
+          type="submit"
           label="Login"
           primary
           fullWidth
-          onClick={this.handleLogin}
         />
-      </div>
+      </form>
     )
   }
 }
