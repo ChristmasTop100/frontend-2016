@@ -41,6 +41,7 @@ class SongRow extends Component {
     this.timeout = setTimeout(() => {
       XmasAPI.updateVote(this.props.song.id, this.state.score, this.props.token)
         .catch((error) => {
+          // eslint-disable-next-line
           console.log(error)
         })
     }, 500)

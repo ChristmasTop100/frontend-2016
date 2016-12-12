@@ -27,6 +27,7 @@ class SongsTable extends Component {
         })
       })
       .catch((error) => {
+        // eslint-disable-next-line
         console.log(error)
       })
   }
