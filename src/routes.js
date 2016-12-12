@@ -21,7 +21,7 @@ const getRoutes = (store) => {
     <Route path="/" component={App}>
       <IndexRoute component={Home} onEnter={requireAuth} />
       <Route path="login" component={Login} />
-      <Route path="auth/otl/*" component={OneTimeLogin} />
+      <Route path="auth/otl/:token" component={OneTimeLogin} />
     </Route>
   )
 }

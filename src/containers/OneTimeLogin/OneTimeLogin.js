@@ -23,7 +23,7 @@ class OneTimeLogin extends Component {
   handleLogin() {
     const username = this.usernameInput
     const password = this.passwordInput
-    const token = this.props.params.splat
+    const token = this.props.params.token
 
     this.setState({ showCircularElements: true })
 
