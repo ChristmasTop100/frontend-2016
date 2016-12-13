@@ -17,11 +17,14 @@ class SongRow extends Component {
   }
 
   votePlus() {
-    if (this.state.score < 20) {
+    if (this.state.score < 20 && this.props.totalVotes < 100) {
       this.setState(prevState => ({
         score: prevState.score + 1,
       }))
       this.submitVote()
+      this.props.onVote(this.props.totalVotes + 1)
+    } else {
+      this.props.onVote(100)
     }
   }
 
@@ -31,6 +34,7 @@ class SongRow extends Component {
         score: prevState.score - 1,
       }))
       this.submitVote()
+      this.props.onVote(this.props.totalVotes - 1)
     }
   }
 
@@ -87,6 +91,8 @@ SongRow.propTypes = {
   }).isRequired,
   songIndex: PropTypes.number.isRequired,
   token: PropTypes.string.isRequired,
+  totalVotes: PropTypes.number.isRequired,
+  onVote: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
