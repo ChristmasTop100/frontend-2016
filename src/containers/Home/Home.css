@@ -1,5 +1,5 @@
 .SpotifyPlayer {
-  width: 100%;
+  width: calc(100% - 165px);
   background-color: #282828;
   position: fixed;
   bottom: 0;

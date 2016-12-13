@@ -62,6 +62,7 @@ class SongsTable extends Component {
       return <CircularProgress size={80} thickness={5} />
     }
 
+    const votesLeft = 100 - this.state.totalVotes
     return (
       <div>
         <table className="SongsTable">
@@ -89,6 +90,12 @@ class SongsTable extends Component {
             })}
           </tbody>
         </table>
+        <div
+          className="VotesLeftCounter"
+          style={{ backgroundColor: redA400 }}
+        >
+          Votes left <span>{votesLeft}</span>
+        </div>
         <Snackbar
           open={this.state.open}
           message="Total amount of 100 votes reached"
