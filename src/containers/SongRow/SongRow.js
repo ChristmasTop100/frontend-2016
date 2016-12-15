@@ -23,8 +23,6 @@ class SongRow extends Component {
       }))
       this.submitVote()
       this.props.onVote(this.props.totalVotes + 1)
-    } else {
-      this.props.onVote(100)
     }
   }
 
