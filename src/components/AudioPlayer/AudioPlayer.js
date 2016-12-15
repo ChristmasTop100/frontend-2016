@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import './AudioPlayer.css'
 
 const AudioPlayer = ({ audioSrc, audioType }) => (
   <div className="audio-player">
