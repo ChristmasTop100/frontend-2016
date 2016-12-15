@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import SongsTable from '../../containers/SongsTable'
+import AudioPlayer from '../../components/AudioPlayer'
 import './Home.css'
 
 class Home extends Component {
@@ -24,6 +25,7 @@ class Home extends Component {
           allowTransparency="true"
           height="80"
         />
+        <AudioPlayer audioSrc="http://172.17.17.149:8000/stream" audioType="audio/mpeg" />
       </div>
     )
   }
